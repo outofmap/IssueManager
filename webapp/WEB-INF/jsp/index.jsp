@@ -13,15 +13,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.3/dialog-polyfill.css">
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
-    <link rel="stylesheet" href="/static-resources/css/styles.css">
-    <link rel="stylesheet" href="/static-resources/css/tinymce.css">
+    <link rel="stylesheet" href="/resources/css/styles.css">
+    <link rel="stylesheet" href="/resources/css/tinymce.css">
 </head>
   <body>
     <div class="issues issues--wrap mdl-layout mdl-js-layout has-drawer is-upgraded">
       <header class="mdl-layout__header mdl-layout__header--waterfall">
         <div class="mdl-layout__header-row">
           <!-- Title -->
-          <span class="mdl-layout-title">javajigi/slipp</span>
+          <span class="mdl-layout-title">IssueManager</span>
         </div>
         <!-- Tabs -->
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
@@ -226,6 +226,6 @@
     <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.3/dialog-polyfill.min.js"></script>
     <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
-    <script src="/static-resources/js/main.js"></script>
+    <script src="/resources/js/main.js"></script>
   </body>
 </html>
