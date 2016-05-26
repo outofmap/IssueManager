@@ -360,3 +360,11 @@ a {
   padding-bottom: 0;
   box-sizing: border-box;
 }
+.loginbox {
+	position: absolute;
+    top: 20px;
+    right: 50px;	
+}
+.loginbox > span {
+	margin-left : 10px;
+}

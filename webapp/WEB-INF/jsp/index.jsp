@@ -1,45 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html;charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/include/tags.jspf" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="kr">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Issue Tracking System</title>
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.3/dialog-polyfill.css">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
-    <link rel="stylesheet" href="/resources/css/styles.css">
-    <link rel="stylesheet" href="/resources/css/tinymce.css">
+<%@ include file="/include/header.jspf" %>
 </head>
   <body>
+    <%-- menu bar--%>
     <div class="issues issues--wrap mdl-layout mdl-js-layout has-drawer is-upgraded">
-      <header class="mdl-layout__header mdl-layout__header--waterfall">
-        <div class="mdl-layout__header-row">
-          <!-- Title -->
-          <span class="mdl-layout-title">IssueManager</span>
-        </div>
-        <!-- Tabs -->
-        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-          <a href="https://github.com/javajigi/slipp"" class="mdl-layout__tab">Code</a>
-          <a href="#" class="mdl-layout__tab is-active">
-            <span class="mdl-badge" data-badge="11">Issues</span>
-          </a>
-          <a href="https://github.com/javajigi/slipp/pulls" class="mdl-layout__tab">
-            <span class="mdl-badge" data-badge="0">Pull requests</span>
-          </a>
-          <a href="https://github.com/javajigi/slipp/wiki" class="mdl-layout__tab">Wiki</a>
-          <a href="https://github.com/javajigi/slipp/pulse" class="mdl-layout__tab">Pulse</a>
-          <a href="https://github.com/javajigi/slipp/graphs" class="mdl-layout__tab">Graphs</a>
-        </div>
-      </header>
-      <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">GitHub</span>
-      </div>
+    <%@ include file="/include/navigation.jspf" %>
       <main class="mdl-layout__content">
         <div class="issues__posts mdl-grid">
           <div class="issues-card-wide mdl-card mdl-shadow--2dp">
