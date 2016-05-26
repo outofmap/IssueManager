@@ -3,8 +3,8 @@
 		<!-- Title -->
 		<span class="mdl-layout-title">IssueManager</span>
 		<div class="mdl-layout-title loginbox">
-		<span class =mdl-layout-title"> <a href="http://www.google.com" >go to Join</a></span>
-		<span class =mdl-layout-title"> <a href="http://www.google.com" >Login</a></span>
+		<span class =mdl-layout-title"> <a href="/users/join" >go to Join</a></span>
+		<span class =mdl-layout-title"> <a href="/users/login" >Login</a></span>
 		</div>
 	</div>
 	<!-- Tabs -->
@@ -13,8 +13,8 @@
 		<a href="#" class="mdl-layout__tab is-active"> <span
 			class="mdl-badge" data-badge="11">Issues</span>
 		</a> <a href="https://github.com/javajigi/slipp/pulls"
-			class="mdl-layout__tab"> <span class="mdl-badge" data-badge="0">Pull
-				requests</span>
+			class="mdl-layout__tab"> 
+			<span class="mdl-badge" data-badge="0">Pull requests</span>
 		</a> <a href="https://github.com/javajigi/slipp/wiki"
 			class="mdl-layout__tab">Wiki</a> <a
 			href="https://github.com/javajigi/slipp/pulse"

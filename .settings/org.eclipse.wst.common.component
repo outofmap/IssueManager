@@ -127,6 +127,9 @@
     <dependent-module archiveName="commons-codec-1.4.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/commons-codec/commons-codec/1.4/commons-codec-1.4.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
+    <dependent-module archiveName="jbcrypt-0.3m.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/mindrot/jbcrypt/0.3m/jbcrypt-0.3m.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
     <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
     <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/resources"/>
   </wb-module>

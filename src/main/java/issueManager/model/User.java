@@ -4,9 +4,13 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.mindrot.jbcrypt.BCrypt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class User {
 	public static final GuestUser GUEST_USER = new GuestUser();
+	private static final Logger log = LoggerFactory.getLogger(User.class);
 	// userId 를 email로 대신 
 	@NotBlank
 	@Email(message="email형식에 맞게 입력해주세요.")
@@ -18,7 +22,12 @@ public class User {
 	@NotBlank
 	private String password;
 
-	public User() {
+	public User() {}
+
+	public User(String email, String name, String password) {
+		this.email = email;
+		this.name = name;
+		this.password = password;
 	}
 
 	public boolean isGuestUser() {
@@ -94,6 +103,20 @@ public class User {
 		} else if (!password.equals(other.password))
 			return false;
 		return true;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "User [email=" + email + ", name=" + name + ", password=" + password + "]";
+	}
+
+	public String encryptPassword(String originalPass) {
+		log.debug("User plain : {}", originalPass);
+        //password hashed 후에 다시 저장하기! 
+        String hashed = BCrypt.hashpw(originalPass, BCrypt.gensalt(11));
+        log.debug("hashed pw: {}", hashed);
+        return hashed;
 	}
 
 }

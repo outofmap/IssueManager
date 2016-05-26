@@ -15,7 +15,7 @@ import org.springframework.stereotype.Controller;
 
 @Configuration
 @PropertySource("classpath:/dev.properties")
-@ComponentScan(basePackages = {"issueManager" }, 
+@ComponentScan(basePackages = {"issueManager.dao","issueManager.service","issueManager.controller.*"}, 
 excludeFilters = @ComponentScan.Filter(value = Controller.class, type = FilterType.ANNOTATION) )
 public class AppConfig {
 	@Value("${db.driver}")
