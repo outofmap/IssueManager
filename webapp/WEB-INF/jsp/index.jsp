@@ -194,9 +194,5 @@
       </div>
     </dialog>
     <%@ include file="/include/footer.jspf" %>
-   <!--  <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.3/dialog-polyfill.min.js"></script>
-    <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
-    <script src="/resources/js/main.js"></script> -->
  </body>
 </html>

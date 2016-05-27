@@ -112,11 +112,15 @@ public class User {
 	}
 
 	public String encryptPassword(String originalPass) {
-		log.debug("User plain : {}", originalPass);
+//		log.debug("User plain : {}", originalPass);
         //password hashed 후에 다시 저장하기! 
         String hashed = BCrypt.hashpw(originalPass, BCrypt.gensalt(11));
         log.debug("hashed pw: {}", hashed);
         return hashed;
+	}
+
+	public boolean matchPassword(String originalPass, String savedPass) {
+		return BCrypt.checkpw(originalPass,savedPass);
 	}
 
 }

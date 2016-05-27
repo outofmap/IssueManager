@@ -114,6 +114,13 @@
 			<artifactId>h2</artifactId>
 			<version>1.4.191</version>
 		</dependency>
+		<!-- http://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.38</version>
+		</dependency>
+
 		<!--DB 커넥션 풀(connection pool) 라이브러리 DBCP2는 JDK7이상에 대응함. JDBC4.1이상 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>

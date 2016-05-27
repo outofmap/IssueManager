@@ -30,6 +30,15 @@ public class UsersTest {
 		String testpw = "testpw";
 		String after = testUser.encryptPassword(testpw);
 		Assert.assertNotEquals(testpw, after);
-		
+	}
+	
+	@Test
+	public void matchPassword() {
+		//실제로는 사용자가 입력할 pw 
+		String testpw = "123456tt";
+		//로그인 사용자의 저장된 hashed pw 
+		String hashed = testUser.encryptPassword(testpw);
+		boolean result = testUser.matchPassword(testpw, hashed);
+		Assert.assertTrue(result);
 	}
 }

@@ -1,14 +1,12 @@
-package issueManager;
+package web.argumentresolver;
 
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
-import issueManager.model.User;
-import web.argumentresolver.LoginUser;
+import issueManager.UsersesseionUtils;
 
 public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
 

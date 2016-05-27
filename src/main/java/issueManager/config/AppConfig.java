@@ -3,6 +3,8 @@ package issueManager.config;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -26,6 +28,7 @@ public class AppConfig {
 	private String DB_USERNAME;
 	@Value("${db.pw}")
 	private String DB_PW;
+	private static final Logger logger = LoggerFactory.getLogger(AppConfig.class);
 
 	@Bean
 	public DataSource dataSource() {
@@ -34,6 +37,7 @@ public class AppConfig {
 		ds.setUrl(DB_URL);
 		ds.setUsername(DB_USERNAME);
 		ds.setPassword(DB_PW);
+		logger.debug("data base:"+ds.getDriverClassName()+"username"+ds.getUsername());
 		return ds;
 	}
 
