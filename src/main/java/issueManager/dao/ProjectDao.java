@@ -19,25 +19,27 @@ public class ProjectDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	private static final Logger logger = LoggerFactory.getLogger(UserDao.class);
+
 	public List<Project> findAll() {
 		List<Project> result;
 		String sql = "select * from project";
-		result = jdbcTemplate.query(sql,new BeanPropertyRowMapper<Project>(Project.class));
+		result = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Project>(Project.class));
 		return result;
 	}
+
 	public List<Project> findbyEmail(String email) {
 		List<Project> result;
-		String sql = "select p.projectId, p.name from project as p inner join project_user as pu "+
-				"on p.projectId = pu.projectId where pu.email = ?"; 
-		
-		RowMapper<Project> rm = new RowMapper<Project>(){
+		String sql = "select p.projectId, p.name from project as p inner join project_user as pu "
+				+ "on p.projectId = pu.projectId where pu.email = ?";
+
+		RowMapper<Project> rm = new RowMapper<Project>() {
 			@Override
 			public Project mapRow(ResultSet rs, int index) throws SQLException {
-				return new Project(rs.getLong("p.projectId"),rs.getString("p.name"));
+				return new Project(rs.getLong("p.projectId"), rs.getString("p.name"));
 			}
 		};
-		return jdbcTemplate.query(sql,rm,email); 
-				
+		return jdbcTemplate.query(sql, rm, email);
+
 	}
-	
+
 }

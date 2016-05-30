@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html;charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <header class="mdl-layout__header mdl-layout__header--waterfall">
 	<div class="mdl-layout__header-row">
 		<!-- Title -->
@@ -5,8 +7,10 @@
 		<div class="mdl-layout-title loginbox">
 			<c:choose>
 	        <c:when test="${not empty sessionScope.user}">
+	        	<span class =mdl-layout-title">${user.email}</span>
+	        	<span class =mdl-layout-title">${sessionScope.user.name}님 환영해요!</span>
 		        <span class =mdl-layout-title"><a href="/users/logout" role="button">Log out</a></span>
-		        <span class =mdl-layout-title"><a href="/users/${sessionScope.user.email}/edit" role="button">setting</a></span>
+		        <span class =mdl-layout-title"><a href="/users/${user.email}/" role="button">setting</a></span>
 	        </c:when>
 	        <c:otherwise>
 				<span class =mdl-layout-title"> <a href="/users/join" >Join</a></span>

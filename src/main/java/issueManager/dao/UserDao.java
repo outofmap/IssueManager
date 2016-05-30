@@ -25,8 +25,14 @@ public class UserDao {
 	}
 
 	public User findByEmail(String email) {
-		String sql = "SELECT * FROM USER WHERE email=?";
+		String sql = "SELECT * FROM USER WHERE email = ?";
 		return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), email);
+	}
+
+	public void update(User savedUser) {
+		String sql = "UPDATE USER SET password = ? WHERE email = ?";
+		jdbcTemplate.update(sql, savedUser.getPassword(),savedUser.getEmail());
+		
 	}
 
 }

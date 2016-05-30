@@ -32,8 +32,7 @@ public class MyWebInnitializer implements WebApplicationInitializer {
 		cef.setForceEncoding(true);
 		servletContext.addFilter("characterEncodingFilter", cef).addMappingForUrlPatterns(null, false, "/*");
 
-		servletContext.addFilter("httpMethodFilter", HiddenHttpMethodFilter.class)
-				.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, "/*");
+		servletContext.addFilter("httpMethodFilter", HiddenHttpMethodFilter.class).addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, "/*");
 		AnnotationConfigWebApplicationContext webContext = new AnnotationConfigWebApplicationContext();
 		webContext.setParent(appContext);
 		webContext.register(WebMvcConfig.class);

@@ -13,6 +13,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -93,4 +94,40 @@ public class UserController {
 			return "/user/loginForm";
 		}
 	}
+	
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public String logout(HttpSession session) {
+		session.removeAttribute(UserSessionUtils.USER_SESSION_KEY);
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="/{email:.+}",method=RequestMethod.GET)
+	public String showEditPage(@LoginUser User loginUser, @PathVariable String email, Model model){
+//		loginUser gets from session
+		log.debug(email);
+		User savedUser = userDao.findByEmail(email);
+		if(loginUser.isSameUser(savedUser)){
+			log.debug("edit in");
+			model.addAttribute("user", loginUser);
+			return "/user/editForm";
+		} else{
+			throw new IllegalStateException("다른 사용자의 정보를 수정할 수 없습니다.");
+		}
+	}
+	
+	@RequestMapping(value="/{email:.+}",method=RequestMethod.PUT)
+	public String showEditPage(@LoginUser User loginUser, @PathVariable String email, User newUser){
+//		loginUser gets from session
+		User savedUser = userDao.findByEmail(email);
+		if(loginUser.isSameUser(savedUser)){
+			log.debug("update new password: {}",newUser.getPassword());
+			String hashed = newUser.encryptPassword(newUser.getPassword());
+			savedUser.setPassword(hashed);
+			userDao.update(savedUser);
+			return "/user/editForm";
+		} else{
+			throw new IllegalStateException("다른 사용자의 정보를 수정할 수 없습니다.");
+		}
+	}
+	
 }
