@@ -3,8 +3,16 @@
 		<!-- Title -->
 		<span class="mdl-layout-title">IssueManager</span>
 		<div class="mdl-layout-title loginbox">
-		<span class =mdl-layout-title"> <a href="/users/join" >go to Join</a></span>
-		<span class =mdl-layout-title"> <a href="/users/login" >Login</a></span>
+			<c:choose>
+	        <c:when test="${not empty sessionScope.user}">
+		        <span class =mdl-layout-title"><a href="/users/logout" role="button">Log out</a></span>
+		        <span class =mdl-layout-title"><a href="/users/${sessionScope.user.email}/edit" role="button">setting</a></span>
+	        </c:when>
+	        <c:otherwise>
+				<span class =mdl-layout-title"> <a href="/users/join" >Join</a></span>
+				<span class =mdl-layout-title"> <a href="/users/login" >Login</a></span>
+			</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 	<!-- Tabs -->

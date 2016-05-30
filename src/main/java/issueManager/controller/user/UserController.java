@@ -1,5 +1,7 @@
 package issueManager.controller.user;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -14,16 +16,22 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import issueManager.UserSessionUtils;
+import issueManager.dao.ProjectDao;
 import issueManager.dao.UserDao;
+import issueManager.model.Project;
 import issueManager.model.User;
+import web.argumentresolver.LoginUser;
 
 @Controller
 @RequestMapping("/users")
 public class UserController {
 	private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
-	 @Autowired
-	 private UserDao userDao;
+	@Autowired
+	private UserDao userDao;
+	@Autowired
+	private ProjectDao projectDao;
 	// join page get
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String showJoinPage(Model model) {
@@ -33,7 +41,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String create(@Valid User user, BindingResult bindingResult,Model model) throws Exception {
+	public String create(@Valid User user, BindingResult bindingResult, Model model) throws Exception {
 		if (bindingResult.hasErrors()) {
 			log.debug("user info is NOT valid");
 			return "/user/joinForm";
@@ -41,9 +49,9 @@ public class UserController {
 		String hashed = user.encryptPassword(user.getPassword());
 		user.setPassword(hashed);
 		log.debug("after hased user :" + user.toString());
-		try{
+		try {
 			userDao.insert(user);
-		} catch(DuplicateKeyException du){
+		} catch (DuplicateKeyException du) {
 			log.debug(du.getMessage());
 			model.addAttribute("sameKey", true);
 			return "/user/joinForm";
@@ -69,14 +77,20 @@ public class UserController {
 			return "/user/loginForm";
 		}
 		User savedUser = userDao.findByEmail(user.getEmail());
+		
 		if(user.matchPassword(user.getPassword(),savedUser.getPassword())){
-//			session.setAttribute(UserSessionUtils.USER_SESSION_KEY, user);
+			//login savedUser object를 session value로 setting 
+			session.setAttribute(UserSessionUtils.USER_SESSION_KEY, savedUser);
 			log.debug("matched pw!!!!");
+			List<Project> projects = projectDao.findbyEmail(savedUser.getEmail());
+			log.debug(projects.toString());
+			model.addAttribute("user", savedUser);
+			model.addAttribute("projects", projects);
+			return "/project/myProjects";
 		} else {
 			log.debug("password no match");
 			model.addAttribute("loginFailed", true);
 			return "/user/loginForm";
 		}
-		return "redirect:/";
 	}
 }

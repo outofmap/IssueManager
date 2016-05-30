@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class User {
-	public static final GuestUser GUEST_USER = new GuestUser();
+	public static final GuestUser GUESTUSER = new GuestUser();
 	private static final Logger log = LoggerFactory.getLogger(User.class);
 	// userId 를 email로 대신 
 	@NotBlank
@@ -58,16 +58,35 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public boolean isSameUser(User user){
+		//parameter user = DB에서 찾아 온 user  
+		// true이면, DB에서 찾아온 user와 loginUser가 같은 사람.
+		// false이면, DB에서 찾아온 user와 loginUser가 다름 또는 GUESTUSER 상태. 
+		return checkUserEmail(user.getEmail());
+	}
+	
+	private boolean checkUserEmail(String newUserEmail) {
+		//this.email = email, this는 loginUser 인 상태 
+		//login user는 GUESTUSER 또는 session에서 저장된 USER인 상태이다. 
+		if(email == null){
+			//email == null 이면, GEUSTUSER이다. 
+			return false;
+		}
+		return email.equals(newUserEmail);
+	}
+
 	public boolean isGuestUSer(){
 		return false;
 	}
 	
 	private static class GuestUser extends User {
+		//GuestUser생성 시 모든 것을 User에게 상속 받되, isGuestUser = true 인 상태로 생성됨.
 		@Override
 		public boolean isGuestUser() {
 			return true;
 		}
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -112,7 +131,7 @@ public class User {
 	}
 
 	public String encryptPassword(String originalPass) {
-//		log.debug("User plain : {}", originalPass);
+		//log.debug("User plain : {}", originalPass);
         //password hashed 후에 다시 저장하기! 
         String hashed = BCrypt.hashpw(originalPass, BCrypt.gensalt(11));
         log.debug("hashed pw: {}", hashed);

@@ -14,7 +14,7 @@
 		<div class="issues__posts mdl-grid">
 			<div class="issues-card-wide mdl-card mdl-shadow--2dp">
 				<div class="mdl-card__title mdl-shadow--2dp">
-					<h2 class="mdl-card__title-text mdl-color-text--grey-800">Public Project</h2>
+					<h2 class="mdl-card__title-text mdl-color-text--grey-800">${user.name}님의 프로젝트</h2>
 				</div>
 				<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored show-modal">
 					<i class="material-icons">add</i>
@@ -23,14 +23,13 @@
 					<ul class="issue-list mdl-list">
 						<c:if test="${empty projects}">
 							<li class="mdl-list__item mdl-list__item--two-line"><span
-								class="mdl-list__item-primary-content"> <a href="/"><strong>등록
-											된 프로젝트가 없습니다.</strong></a>
+								class="mdl-list__item-primary-content"> <a href="/"><strong>등록된 프로젝트가 없습니다.</strong></a>
 							</span></li>
 						</c:if>
 						<c:if test="${not empty projects}">
 							<c:forEach items="${projects}" var="project">
-								<li class="mdl-list__item mdl-list__item--two-line"><span
-									class="mdl-list__item-primary-content"> <a href="/"><strong>${project.name}</strong></a>
+								<li class="mdl-list__item mdl-list__item--two-line">
+								<span class="mdl-list__item-primary-content"> <a href="/projects/${project.projectId}"><strong>${project.name}</strong></a>
 								</span></li>
 							</c:forEach>
 						</c:if>
@@ -50,7 +49,7 @@
         <i class="material-icons">create</i>
       </div>
       <div class="mdl-dialog__content">
-        <form action="#">
+        <form action="/projects">
           <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" type="text" id="new-issue__title">
             <label class="mdl-textfield__label" for="new-issue__title"><strong>Title</strong></label>

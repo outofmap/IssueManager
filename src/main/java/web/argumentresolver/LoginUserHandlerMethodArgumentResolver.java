@@ -6,7 +6,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
-import issueManager.UsersesseionUtils;
+import issueManager.UserSessionUtils;
 
 public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
 
@@ -17,7 +17,7 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
 	@Override
 	public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
 			NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
-		return UsersesseionUtils.getUser(webRequest);
+		return UserSessionUtils.getUser(webRequest);
 	}
  
 }
