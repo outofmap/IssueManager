@@ -1,11 +1,12 @@
 package issueManager.model;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Project {
 	Long projectId;
 	String name;
-	List<User> userList;
+	HashMap<String, User> userList;
 	
 	public Project(){};
 	
@@ -13,6 +14,7 @@ public class Project {
 		this.projectId = projectId;
 		this.name = name;
 	};
+
 
 	public Long getProjectId() {
 		return projectId;
@@ -26,12 +28,22 @@ public class Project {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<User> getUserList() {
+	public HashMap<String, User> getUserList() {
 		return userList;
 	}
-	public void setUserList(List<User> userList) {
+	
+	public void setUserList(HashMap<String, User> userList) {
 		this.userList = userList;
 	}
+	
+	public User addUserList(User user){
+		return this.userList.put(user.getEmail(), user);
+	}
+	
+	public boolean hasUser(String email){
+		return this.userList.containsKey(email);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

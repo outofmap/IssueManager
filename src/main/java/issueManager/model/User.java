@@ -30,10 +30,7 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isGuestUser() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	public String getEmail() {
 		return email;
@@ -74,8 +71,8 @@ public class User {
 		}
 		return email.equals(newUserEmail);
 	}
-
-	public boolean isGuestUSer(){
+	
+	public boolean isGuestUser() {
 		return false;
 	}
 	

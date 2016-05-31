@@ -30,7 +30,7 @@
 						<c:if test="${not empty projects}">
 							<c:forEach items="${projects}" var="project">
 								<li class="mdl-list__item mdl-list__item--two-line"><span
-									class="mdl-list__item-primary-content"> <a href="/"><strong>${project.name}</strong></a>
+									class="mdl-list__item-primary-content"> <a href="/projects/${project.projectId}"><strong>${project.name}</strong></a>
 								</span></li>
 							</c:forEach>
 						</c:if>

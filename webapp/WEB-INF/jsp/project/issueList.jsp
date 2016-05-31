@@ -11,12 +11,13 @@
 	<div
 		class="issues issues--wrap mdl-layout mdl-js-layout has-drawer is-upgraded">
 		<%@ include file="/include/navigation.jspf"%>
+				 <buttion class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored><a href="projects/${project.projectId}/edit"><i class="material-icons">edit</i></buttion> 
+				 <buttion class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored><a href="projects/${project.projectId}/join"><i class="material-icons">edit</i></buttion> 
 		<main class="mdl-layout__content">
 		<div class="issues__posts mdl-grid">
 			<div class="issues-card-wide mdl-card mdl-shadow--2dp">
 				<div class="mdl-card__title mdl-shadow--2dp">
-					<h2 class="mdl-card__title-text mdl-color-text--grey-800">Open
-						Issues</h2>
+					<h2 class="mdl-card__title-text mdl-color-text--grey-800">${project.name}</h2>
 				</div>
 				<button
 					class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored show-modal">
@@ -245,6 +246,8 @@
 		</footer> </main>
 		<div class="mdl-layout__obfuscator"></div>
 	</div>
+	
+	
 	<dialog class="mdl-dialog new-issue">
 	<div class="pr">
 		<i class="material-icons">create</i>
