@@ -115,7 +115,7 @@ public class UserController {
 		}
 	}
 	
-	@RequestMapping(value="/{email:.+}",method=RequestMethod.PUT)
+	@RequestMapping(value="/{email:.+}", method=RequestMethod.PUT)
 	public String showEditPage(@LoginUser User loginUser, @PathVariable String email, User newUser){
 //		loginUser gets from session
 		User savedUser = userDao.findByEmail(email);
@@ -124,7 +124,7 @@ public class UserController {
 			String hashed = newUser.encryptPassword(newUser.getPassword());
 			savedUser.setPassword(hashed);
 			userDao.update(savedUser);
-			return "/user/editForm";
+			return "redirect:/";
 		} else{
 			throw new IllegalStateException("다른 사용자의 정보를 수정할 수 없습니다.");
 		}

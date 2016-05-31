@@ -50,15 +50,16 @@
         <i class="material-icons">create</i>
       </div>
       <div class="mdl-dialog__content">
-        <form action="#">
+        <form:form action="/projects" name="project" modelAttribute="project" method="post">
           <div class="mdl-textfield mdl-js-textfield">
-            <input class="mdl-textfield__input" type="text" id="new-issue__title">
-            <label class="mdl-textfield__label" for="new-issue__title"><strong>Title</strong></label>
+            <form:input path="name" class="mdl-textfield__input" />
+            <form:errors path="name" class="error" id="new-issue__title"/>
+            <label class="mdl-textfield__label" for="new-issue__title"><strong>프로젝트 이름</strong></label>
           </div>
-        </form>
-      </div>
-      <div class="mdl-dialog__actions mdl-dialog__actions">
-        <button type="button" class="mdl-button close">Submit new project</button>
+	      <div class="mdl-dialog__actions mdl-dialog__actions">
+	        <button type="submit" class="mdl-button close">만들기</button>
+	      </div>
+        </form:form>
       </div>
     </dialog>
 	<%@ include file="/include/footer.jspf"%>

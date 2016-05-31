@@ -10,7 +10,7 @@
 			<%@ include file="/include/navigation.jspf"%>
 			<h1>회원가입</h1>
 			<!-- spring form tag -->
-			<form:form name="user" modelAttribute="user" action="/users/${user.email}/" method="put">
+			<form:form name="user" modelAttribute="user" action="/users/${user.email}" method="put">
 				<div class="form-group">
 					<label for="email">${user.email}</label>
 				</div>
@@ -21,7 +21,7 @@
 					<label for="password">비밀번호</label>
 					<form:password path="password" cssClass="form-control" />
 					<form:errors path="password" cssClass="error" />
-					<button type="submit" class="btn btn-success clearfix pull-right">회원가입</button>
+					<button type="submit" class="btn btn-success clearfix pull-right">비밀번호 수정</button>
 				</div>
 			</form:form>
 			<%-- <%@ include file="/include/footer.jspf"%> --%>

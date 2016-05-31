@@ -3,7 +3,7 @@
 <header class="mdl-layout__header mdl-layout__header--waterfall">
 	<div class="mdl-layout__header-row">
 		<!-- Title -->
-		<span class="mdl-layout-title">IssueManager</span>
+		<span class="mdl-layout-title"><a href="/" >IssueManager</a></span>
 		<div class="mdl-layout-title loginbox">
 			<c:choose>
 	        <c:when test="${not empty sessionScope.user}">

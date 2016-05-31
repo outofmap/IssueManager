@@ -20,6 +20,7 @@ public class HomeController {
 	public String showMainPage(Model model) {
 		List<Project> projects = projectDao.findAll();
 		model.addAttribute("projects",projects);
+		model.addAttribute("project",new Project());
 		return "index";
 	}
 }
