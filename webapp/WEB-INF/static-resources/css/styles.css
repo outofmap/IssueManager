@@ -368,3 +368,13 @@ a {
 .loginbox > span {
 	margin-left : 10px;
 }
+
+.editText{
+	color: cornflowerblue;
+    margin-left: 20px;
+}
+
+.joinText {
+	color: hotpink;
+    margin-left: 20px;
+}

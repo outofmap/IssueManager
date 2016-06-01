@@ -13,8 +13,8 @@
 		        <span class =mdl-layout-title"><a href="/users/${user.email}/" role="button">setting</a></span>
 	        </c:when>
 	        <c:otherwise>
-				<span class =mdl-layout-title"> <a href="/users/join" >Join</a></span>
-				<span class =mdl-layout-title"> <a href="/users/login" >Login</a></span>
+				<span class =mdl-layout-title"> <a href="/users/join" role="button">Join</a></span>
+				<span class =mdl-layout-title"> <a href="/users/login" role="button">Login</a></span>
 			</c:otherwise>
 			</c:choose>
 		</div>

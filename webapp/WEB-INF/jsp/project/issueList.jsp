@@ -11,13 +11,14 @@
 	<div
 		class="issues issues--wrap mdl-layout mdl-js-layout has-drawer is-upgraded">
 		<%@ include file="/include/navigation.jspf"%>
-				 <buttion class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored><a href="projects/${project.projectId}/edit"><i class="material-icons">edit</i></buttion> 
-				 <buttion class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored><a href="projects/${project.projectId}/join"><i class="material-icons">edit</i></buttion> 
 		<main class="mdl-layout__content">
 		<div class="issues__posts mdl-grid">
+				 <%-- <buttion class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored><a href="projects/${project.projectId}/join"><i class="material-icons">join</i></buttion>  --> --%>
 			<div class="issues-card-wide mdl-card mdl-shadow--2dp">
 				<div class="mdl-card__title mdl-shadow--2dp">
 					<h2 class="mdl-card__title-text mdl-color-text--grey-800">${project.name}</h2>
+					<span class="editText"><a href="/projects/${project.projectId}/edit">프로젝트 수정</a></span>
+					<span class= "joinText"><a href="/projects/${project.projectId}/join">참여하기</a></span>
 				</div>
 				<button
 					class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored show-modal">
@@ -25,9 +26,9 @@
 				</button>
 				<div class="mdl-card__supporting-text">
 					<ul class="issue-list mdl-list">
-						<li class="mdl-list__item mdl-list__item--two-line"><span
-							class="mdl-list__item-primary-content"> <a
-								href="https://github.com/javajigi"> <img
+						<li class="mdl-list__item mdl-list__item--two-line">
+						<span class="mdl-list__item-primary-content"> 
+							<a href="https://github.com/javajigi"> <img
 									class="mdl-list__item-avatar" height="48" width="48"
 									src="https://avatars2.githubusercontent.com/u/520500?v=3&amp;s=96"
 									alt="@javajigi">

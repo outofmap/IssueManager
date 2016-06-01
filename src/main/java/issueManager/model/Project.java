@@ -1,12 +1,11 @@
 package issueManager.model;
 
-import java.util.HashMap;
 import java.util.List;
 
 public class Project {
 	Long projectId;
 	String name;
-	HashMap<String, User> userList;
+	List<User> userList;
 	
 	public Project(){};
 	
@@ -28,20 +27,21 @@ public class Project {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public HashMap<String, User> getUserList() {
+
+	public List<User> getUserList() {
 		return userList;
 	}
-	
-	public void setUserList(HashMap<String, User> userList) {
+
+	public void setUserList(List<User> userList) {
 		this.userList = userList;
 	}
-	
-	public User addUserList(User user){
-		return this.userList.put(user.getEmail(), user);
+
+	public boolean addUserList(User user){
+		return this.userList.add(user);
 	}
 	
-	public boolean hasUser(String email){
-		return this.userList.containsKey(email);
+	public boolean hasUser(User user){
+		return this.userList.contains(user);
 	}
 	
 	@Override
