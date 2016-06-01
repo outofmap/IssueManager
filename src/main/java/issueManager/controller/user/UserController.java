@@ -85,6 +85,7 @@ public class UserController {
 			log.debug("matched pw!!!!");
 			List<Project> projects = projectDao.findbyEmail(savedUser.getEmail());
 			log.debug(projects.toString());
+			model.addAttribute("project", new Project());
 			model.addAttribute("user", savedUser);
 			model.addAttribute("projects", projects);
 			return "/project/myProjects";
