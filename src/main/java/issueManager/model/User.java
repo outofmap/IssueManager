@@ -32,6 +32,11 @@ public class User {
 
 	
 
+	public User(String email, String name) {
+		this.email = email;
+		this.name = name;
+	}
+
 	public String getEmail() {
 		return email;
 	}

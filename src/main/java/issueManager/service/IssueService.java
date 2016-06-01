@@ -23,52 +23,53 @@ public class IssueService {
 	ProjectDao projectDao;
 	@Autowired
 	IssueDao issueDao;
-	
+
 	@Transactional
 	public void insertProject(User loginUser, Project project) {
 		Long projectId = projectDao.insert(project.getName());
-		projectDao.insertWithEmail(projectId,loginUser.getEmail());
+		projectDao.insertWithEmail(projectId, loginUser.getEmail());
 	}
 
 	public Project getProjectInfo(Long projectId) {
 		Project saved = projectDao.findById(projectId);
-		//project_user 테이블에서 해당 프로젝트참여자 Map가져오기
-		//saved에 해당 정보 더해주기 
+		List<User> members = projectDao.getMembers(projectId);
+		logger.debug("members"+members.toString());
+		if (!members.isEmpty()) {
+			saved.setUserList(members);
+			logger.debug("project members" + saved.getUserList());
+		} 
 		return saved;
 	}
 
 	public Project getProjectByUser(Long projectId, String email) {
 		List<Project> projectList = projectDao.findbyEmail(email);
-		logger.debug("proejctlist with email : "+projectList.toString());
+		logger.debug("proejctlist with email : " + projectList.toString());
 		return matchByprojectId(projectId, projectList);
-		
+
 	}
 
-	private Project matchByprojectId(Long projectId,List<Project> projectlist) {
+	private Project matchByprojectId(Long projectId, List<Project> projectlist) {
 		for (Project project : projectlist) {
 			if (project.getProjectId().equals(projectId)) {
 				return project;
-			} 
+			}
 		}
-		//proejcId와 match되는 project가 없음. user는 projectId에 참여하지 않음. . 
+		// proejcId와 match되는 project가 없음. user는 projectId에 참여하지 않음. .
 		return null;
 	}
 
 	public void deleteProject(Long projectId) {
 		// TODO Auto-generated method stub
-		//ISSUE에 있는 reply 지우기 
-//		issueDao.findAllByPId(projectId);
-//		delete issuelist 
-		//issue table에서 projectId 지우기
+		// ISSUE에 있는 reply 지우기
+		// issueDao.findAllByPId(projectId);
+		// delete issuelist
+		// issue table에서 projectId 지우기
 		issueDao.deleteAllByPId(projectId);
-		//project_user table 에서 지우기 
+		// project_user table 에서 지우기
 		projectDao.deleteWithMembers(projectId);
-		//project table에서 지우기 
+		// project table에서 지우기
 		projectDao.delete(projectId);
-		
+
 	}
-	
-	
-	
-	
+
 }

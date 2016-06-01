@@ -36,10 +36,6 @@ public class Project {
 		this.userList = userList;
 	}
 
-	public boolean addUserList(User user){
-		return this.userList.add(user);
-	}
-	
 	public boolean hasUser(User user){
 		return this.userList.contains(user);
 	}

@@ -47,6 +47,7 @@ public class ProjectController {
 	public String show(@PathVariable Long projectId, Model model) {
 		Project savedProject = service.getProjectInfo(projectId);
 		logger.debug("found project info{}" + savedProject.toString());
+		model.addAttribute("members", savedProject.getUserList());
 		model.addAttribute("project", savedProject);
 		return "/project/issueList";
 	}

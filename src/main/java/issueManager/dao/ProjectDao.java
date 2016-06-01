@@ -22,6 +22,7 @@ import org.springframework.stereotype.Repository;
 import com.mysql.jdbc.Statement;
 
 import issueManager.model.Project;
+import issueManager.model.User;
 
 @Repository
 public class ProjectDao {
@@ -92,6 +93,21 @@ public class ProjectDao {
 		String sql = "DELETE FROM project_user where projectId = ?";
 		jdbcTemplate.update(sql, projectId);
 		logger.debug("delete All P_U By ProjectId");
+		
+	}
+
+	public List<User> getMembers(Long projectId) {
+		String sql = "select u.email, u.name from user as u inner join project_user as pu "
+				+ "on u.email = pu.email where pu.projectId = ?";
+
+		RowMapper<User> rm = new RowMapper<User>() {
+			@Override
+			public User mapRow(ResultSet rs, int index) throws SQLException {
+				return new User(rs.getString("u.email"), rs.getString("u.name"));
+			}
+		};
+		return jdbcTemplate.query(sql, rm, projectId);
+
 		
 	}
 	

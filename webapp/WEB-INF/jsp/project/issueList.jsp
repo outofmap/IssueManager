@@ -30,8 +30,10 @@
 						<li class="mdl-list__item mdl-list__item--two-line">
 						<span class="mdl-list__item-primary-content"> 
 							<strong>Members</strong></a> 
-							<span class="member">송희</span>
-							<span class="member">헤르미온느</span>
+							<c:forEach items="${members}" var="member">
+								<span class="member">${member.name}</span>
+								<span class="member">${member.email}</span>
+							</c:forEach>
 						 <span class="mdl-list__item-secondary-content">
 									
 						</span></li>
