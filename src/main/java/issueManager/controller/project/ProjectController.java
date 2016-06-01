@@ -35,15 +35,16 @@ public class ProjectController {
 		logger.debug(loginUser.getClass().getName());
 		if (!loginUser.isGuestUser()) {
 			service.insertProject(loginUser, project);
+			logger.debug("in");
 			return "redirect:/";
 		} else {
 			return "redirect:/users/login";
 		}
 	}
 
-	// 특정 프로젝트 페이지
+	// 특정 프로젝트 페이지 member / issue 보여주기 
 	@RequestMapping(value = "/{projectId}", method = RequestMethod.GET)
-	public String showListPage(@PathVariable Long projectId, Model model) {
+	public String show(@PathVariable Long projectId, Model model) {
 		Project savedProject = service.getProjectInfo(projectId);
 		logger.debug("found project info{}" + savedProject.toString());
 		model.addAttribute("project", savedProject);
@@ -80,5 +81,27 @@ public class ProjectController {
 			return "redirect:/users/login";
 		}
 	}
+	//프로젝트 이름 수정하기 
+	@RequestMapping(value = "/{projectId}", method = RequestMethod.PUT)
+	public String edit(@PathVariable Long projectId, @LoginUser User loginUser, Project project) {
+		if(!loginUser.isGuestUser()){
+			projectDao.update(projectId, project.getName());
+			return "redirect:/";
+		}else {
+			return "redirect:/users/login";
+		}
+	}
+	//프로젝트 삭제하기  
+	@RequestMapping(value = "/{projectId}", method = RequestMethod.DELETE)
+	public String delete(@PathVariable Long projectId, @LoginUser User loginUser, Project project) {
+		if(!loginUser.isGuestUser()){
+			service.deleteProject(projectId);
+			return "redirect:/";
+		}else {
+			return "redirect:/users/login";
+		}
+	}
+	
+	
 
 }

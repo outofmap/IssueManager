@@ -76,6 +76,25 @@ public class ProjectDao {
 		String sql = "select * from project where projectId = ?";
 		return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Project.class),projectId);
 	}
+
+	public void update(Long projectId, String name) {
+		String sql = "UPDATE project SET name=? WHERE projectId  = ?";
+		jdbcTemplate.update(sql, name, projectId);
+	}
+
+	public void delete(Long projectId) {
+		String sql = "DELETE FROM project where projectId = ?";
+		jdbcTemplate.update(sql, projectId);
+		logger.debug("delete project By ProjectId");
+		
+	}
+
+	public void deleteWithMembers(Long projectId) {
+		String sql = "DELETE FROM project_user where projectId = ?";
+		jdbcTemplate.update(sql, projectId);
+		logger.debug("delete All P_U By ProjectId");
+		
+	}
 	
 	
 

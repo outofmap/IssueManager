@@ -26,6 +26,16 @@
 				</button>
 				<div class="mdl-card__supporting-text">
 					<ul class="issue-list mdl-list">
+						
+						<li class="mdl-list__item mdl-list__item--two-line">
+						<span class="mdl-list__item-primary-content"> 
+							<strong>Members</strong></a> 
+							<span class="member">송희</span>
+							<span class="member">헤르미온느</span>
+						 <span class="mdl-list__item-secondary-content">
+									
+						</span></li>
+												
 						<li class="mdl-list__item mdl-list__item--two-line">
 						<span class="mdl-list__item-primary-content"> 
 							<a href="https://github.com/javajigi"> <img

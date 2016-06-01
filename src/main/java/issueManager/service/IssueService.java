@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import issueManager.dao.IssueDao;
 import issueManager.dao.ProjectDao;
 import issueManager.dao.UserDao;
 import issueManager.model.Project;
@@ -20,6 +21,8 @@ public class IssueService {
 	UserDao userDao;
 	@Autowired
 	ProjectDao projectDao;
+	@Autowired
+	IssueDao issueDao;
 	
 	@Transactional
 	public void insertProject(User loginUser, Project project) {
@@ -49,6 +52,20 @@ public class IssueService {
 		}
 		//proejcId와 match되는 project가 없음. user는 projectId에 참여하지 않음. . 
 		return null;
+	}
+
+	public void deleteProject(Long projectId) {
+		// TODO Auto-generated method stub
+		//ISSUE에 있는 reply 지우기 
+//		issueDao.findAllByPId(projectId);
+//		delete issuelist 
+		//issue table에서 projectId 지우기
+		issueDao.deleteAllByPId(projectId);
+		//project_user table 에서 지우기 
+		projectDao.deleteWithMembers(projectId);
+		//project table에서 지우기 
+		projectDao.delete(projectId);
+		
 	}
 	
 	
