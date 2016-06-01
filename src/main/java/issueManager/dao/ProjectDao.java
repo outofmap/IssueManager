@@ -37,7 +37,6 @@ public class ProjectDao {
 	}
 
 	public List<Project> findbyEmail(String email) {
-		List<Project> result;
 		String sql = "select p.projectId, p.name from project as p inner join project_user as pu "
 				+ "on p.projectId = pu.projectId where pu.email = ?";
 
