@@ -51,7 +51,7 @@
       <div class="mdl-dialog__content">
         <form:form action="/projects" name="project" modelAttribute="project" method="post">
           <div class="mdl-textfield mdl-js-textfield">
-            <form:input path="name" class="mdl-textfield__input" />
+            <form:input path="name" class="mdl-textfield__input"/>
             <form:errors path="name" class="error" id="new-issue__title"/>
             <label class="mdl-textfield__label" for="new-issue__title"><strong>프로젝트 이름</strong></label>
           </div>
