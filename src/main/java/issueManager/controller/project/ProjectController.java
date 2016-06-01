@@ -52,17 +52,19 @@ public class ProjectController {
 		return "/project/issueList";
 	}
 
-	@RequestMapping(value = "/{projectId}/join", method = RequestMethod.GET)
+	//method와 실제 처리내용이 안맞음 get메소드인데 user_project table에 member로 등록함. 
+	@RequestMapping(value = "/{projectId}/join", method = RequestMethod. GET)
 	public String joinThisProject(@PathVariable Long projectId, Model model, @LoginUser User loginUser) {
-		if (loginUser.isGuestUser()) {
-			// Project savedProject = service.getProjectInfo(projectId);
-			// saveProject에 있는 userlist중 loginUser찾기 by email
-			// savedProejct.hasUser()
-			// 성공적으로 추가됐으면 redirect
-			// 아닌 경우 멤버가 아닌 것임.
+		if (!loginUser.isGuestUser()) {
+			Project savedProject = service.getProjectInfo(projectId);
+			if(savedProject.hasUser(loginUser.getEmail())){
+				//이미 등록한 유저임. 
+				return "redirect:/projects/" + projectId;
+			}
+			projectDao.insertWithEmail(projectId, loginUser.getEmail());
 			return "redirect:/projects/" + projectId;
 		}
-		return null;
+		return "redirect:/users/login";
 	}
 
 	@RequestMapping(value = "/{projectId}/edit", method = RequestMethod.GET)

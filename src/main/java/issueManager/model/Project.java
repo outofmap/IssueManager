@@ -35,10 +35,6 @@ public class Project {
 	public void setUserList(List<User> userList) {
 		this.userList = userList;
 	}
-
-	public boolean hasUser(User user){
-		return this.userList.contains(user);
-	}
 	
 	@Override
 	public int hashCode() {
@@ -73,6 +69,15 @@ public class Project {
 	@Override
 	public String toString() {
 		return "Project [projectId=" + projectId + ", name=" + name + ", userList=" + userList + "]";
+	}
+
+	public boolean hasUser(String email) {
+		for (User user : this.userList) {
+			if(user.getEmail().equals(email)){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	
