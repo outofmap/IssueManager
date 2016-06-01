@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
 @ComponentScan(basePackages = {"issueManager.dao","issueManager.service","issueManager.controller.*"}, 
 excludeFilters = @ComponentScan.Filter(value = Controller.class, type = FilterType.ANNOTATION) )
 public class AppConfig {
+	
 	@Value("${db.driver}")
 	private String DB_DRIVER;
 	@Value("${db.url}")

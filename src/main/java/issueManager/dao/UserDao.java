@@ -25,7 +25,7 @@ public class UserDao {
 	}
 
 	public User findByEmail(String email) {
-		String sql = "SELECT * FROM USER WHERE email = ?";
+		String sql = "SELECT * FROM user WHERE email = ?";
 		return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), email);
 	}
 
