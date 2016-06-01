@@ -3,9 +3,9 @@ package issueManager.model;
 import java.util.List;
 
 public class Project {
-	Long projectId;
-	String name;
-	List<User> userList;
+	private Long projectId;
+	private String name;
+	private List<User> userList;
 	
 	public Project(){};
 	

@@ -37,27 +37,33 @@
 						 <span class="mdl-list__item-secondary-content">
 									
 						</span></li>
-												
-						<li class="mdl-list__item mdl-list__item--two-line">
-						<span class="mdl-list__item-primary-content"> 
-							<a href="https://github.com/javajigi"> <img
-									class="mdl-list__item-avatar" height="48" width="48"
-									src="https://avatars2.githubusercontent.com/u/520500?v=3&amp;s=96"
-									alt="@javajigi">
-							</a> <a href="issue.html"><strong>spring boot로 전환 작업 진행해
-										본다.</strong></a> <span class="mdl-list__item-sub-title">#259 opened
-									<relative-time datetime="2016-01-12T08:08:59Z"
-										title="2016년 1월 12일 오후 5:08 GMT+9">on 12 Jan</relative-time>
-									by <a
-									href="https://github.com/javajigi/slipp/issues?q=is%3Aissue+is%3Aopen+author%3Ajavajigi"
-									aria-label="View all issues opened by javajigi"
-									class="tooltipped tooltipped-s muted-link">javajigi</a>
-							</span>
-						</span> </span> <span class="mdl-list__item-secondary-content">
-								<div class="material-icons mdl-badge mdl-badge--overlap"
-									data-badge="0">comment</div>
-						</span></li>
-						<li class="mdl-list__item mdl-list__item--two-line"><span
+						<c:if test="${empty issues}">
+							<li class="mdl-list__item mdl-list__item--two-line"><span
+								class="mdl-list__item-primary-content"> <a href="/"><strong>등록된 이슈가 없습니다.</strong></a>
+							</span></li>
+						</c:if>
+						<c:if test="${not empty issues}">
+						<c:forEach items="${issues}" var="each">
+							<li class="mdl-list__item mdl-list__item--two-line">
+							<span class="mdl-list__item-primary-content"> 
+								<a href="#"> <img class="mdl-list__item-avatar" height="48" width="48" src="#" alt="@javajigi"></a>
+	 								<a href="/projects/${project.projectId}/${each.issueId}">
+	 									<strong>${each.title}</strong></a> 
+	 									<span class="mdl-list__item-sub-title">#${each.issueId} opened by ${each.writer} ${each.user_email}</span>
+									<!-- 	<relative-time datetime="2016-01-12T08:08:59Z"
+											title="2016년 1월 12일 오후 5:08 GMT+9">on 12 Jan</relative-time> --> 
+										<!-- <a href="https://github.com/javajigi/slipp/issues?q=is%3Aissue+is%3Aopen+author%3Ajavajigi"
+										aria-label="View all issues opened by javajigi"
+										class="tooltipped tooltipped-s muted-link">writer </a> -->
+								
+							</span> 
+							<span class="mdl-list__item-secondary-content">
+									<div class="material-icons mdl-badge mdl-badge--overlap"
+										data-badge="0">comment</div>
+							</span></li>
+						</c:forEach>						
+						</c:if>
+						<!-- <li class="mdl-list__item mdl-list__item--two-line"><span
 							class="mdl-list__item-primary-content"> <a
 								href="https://github.com/javajigi"> <img
 									class="mdl-list__item-avatar" height="48" width="48"
@@ -75,177 +81,7 @@
 						</span> </span> <span class="mdl-list__item-secondary-content">
 								<div class="material-icons mdl-badge mdl-badge--overlap"
 									data-badge="0">comment</div>
-						</span></li>
-						<li class="mdl-list__item mdl-list__item--two-line"><span
-							class="mdl-list__item-primary-content"> <a
-								href="https://github.com/javajigi"> <img
-									class="mdl-list__item-avatar" height="48" width="48"
-									src="https://avatars2.githubusercontent.com/u/520500?v=3&amp;s=96"
-									alt="@javajigi">
-							</a> <a href="issue.html"><strong>페이스북의 경우 댓글의 댓글을 가져올 수
-										있도록 한다.</strong></a> <span class="mdl-list__item-sub-title">#259
-									opened <relative-time datetime="2016-01-12T08:08:59Z"
-										title="2016년 1월 12일 오후 5:08 GMT+9">on 12 Jan</relative-time>
-									by <a
-									href="https://github.com/javajigi/slipp/issues?q=is%3Aissue+is%3Aopen+author%3Ajavajigi"
-									aria-label="View all issues opened by javajigi"
-									class="tooltipped tooltipped-s muted-link">javajigi</a>
-							</span>
-						</span> </span> <span class="mdl-list__item-secondary-content">
-								<div class="material-icons mdl-badge mdl-badge--overlap"
-									data-badge="0">comment</div>
-						</span></li>
-						<li class="mdl-list__item mdl-list__item--two-line"><span
-							class="mdl-list__item-primary-content"> <a
-								href="https://github.com/javajigi"> <img
-									class="mdl-list__item-avatar" height="48" width="48"
-									src="https://avatars2.githubusercontent.com/u/520500?v=3&amp;s=96"
-									alt="@javajigi">
-							</a> <a href="issue.html"><strong>[버그] 화면 스크롤 시 오른쪽
-										"태그추가" 버튼 크기 자동 변경</strong></a> <span class="mdl-list__item-sub-title">#259
-									opened <relative-time datetime="2016-01-12T08:08:59Z"
-										title="2016년 1월 12일 오후 5:08 GMT+9">on 12 Jan</relative-time>
-									by <a
-									href="https://github.com/javajigi/slipp/issues?q=is%3Aissue+is%3Aopen+author%3Ajavajigi"
-									aria-label="View all issues opened by javajigi"
-									class="tooltipped tooltipped-s muted-link">javajigi</a>
-							</span>
-						</span> </span> <span class="mdl-list__item-secondary-content">
-								<div class="material-icons mdl-badge mdl-badge--overlap"
-									data-badge="3">comment</div>
-						</span></li>
-						<li class="mdl-list__item mdl-list__item--two-line"><span
-							class="mdl-list__item-primary-content"> <a
-								href="https://github.com/javajigi"> <img
-									class="mdl-list__item-avatar" height="48" width="48"
-									src="https://avatars2.githubusercontent.com/u/520500?v=3&amp;s=96"
-									alt="@javajigi">
-							</a> <a href="issue.html"><strong>사용자가 수정을 하는 경우 수정된 시간이
-										반영되지 않는다.</strong></a> <span class="mdl-list__item-sub-title">#259
-									opened <relative-time datetime="2016-01-12T08:08:59Z"
-										title="2016년 1월 12일 오후 5:08 GMT+9">on 12 Jan</relative-time>
-									by <a
-									href="https://github.com/javajigi/slipp/issues?q=is%3Aissue+is%3Aopen+author%3Ajavajigi"
-									aria-label="View all issues opened by javajigi"
-									class="tooltipped tooltipped-s muted-link">javajigi</a>
-							</span>
-						</span> </span> <span class="mdl-list__item-secondary-content">
-								<div class="material-icons mdl-badge mdl-badge--overlap"
-									data-badge="0">comment</div>
-						</span></li>
-						<li class="mdl-list__item mdl-list__item--two-line"><span
-							class="mdl-list__item-primary-content"> <a
-								href="https://github.com/javajigi"> <img
-									class="mdl-list__item-avatar" height="48" width="48"
-									src="https://avatars2.githubusercontent.com/u/520500?v=3&amp;s=96"
-									alt="@javajigi">
-							</a> <a href="issue.html"><strong>본인이 누른 좋아요와 싫어요를 인지할 수
-										있도록 한다.</strong></a> <span class="mdl-list__item-sub-title">#259
-									opened <relative-time datetime="2016-01-12T08:08:59Z"
-										title="2016년 1월 12일 오후 5:08 GMT+9">on 12 Jan</relative-time>
-									by <a
-									href="https://github.com/javajigi/slipp/issues?q=is%3Aissue+is%3Aopen+author%3Ajavajigi"
-									aria-label="View all issues opened by javajigi"
-									class="tooltipped tooltipped-s muted-link">javajigi</a>
-							</span>
-						</span> </span> <span class="mdl-list__item-secondary-content">
-								<div class="material-icons mdl-badge mdl-badge--overlap"
-									data-badge="1">comment</div>
-						</span></li>
-						<li class="mdl-list__item mdl-list__item--two-line"><span
-							class="mdl-list__item-primary-content"> <a
-								href="https://github.com/javajigi"> <img
-									class="mdl-list__item-avatar" height="48" width="48"
-									src="https://avatars2.githubusercontent.com/u/520500?v=3&amp;s=96"
-									alt="@javajigi">
-							</a> <a href="issue.html"><strong>페북 로그인 사용자의 경우 페북에 바로
-										댓글 달 수 있도록 한다.</strong></a> <span class="mdl-list__item-sub-title">#259
-									opened <relative-time datetime="2016-01-12T08:08:59Z"
-										title="2016년 1월 12일 오후 5:08 GMT+9">on 12 Jan</relative-time>
-									by <a
-									href="https://github.com/javajigi/slipp/issues?q=is%3Aissue+is%3Aopen+author%3Ajavajigi"
-									aria-label="View all issues opened by javajigi"
-									class="tooltipped tooltipped-s muted-link">javajigi</a>
-							</span>
-						</span> </span> <span class="mdl-list__item-secondary-content">
-								<div class="material-icons mdl-badge mdl-badge--overlap"
-									data-badge="0">comment</div>
-						</span></li>
-						<li class="mdl-list__item mdl-list__item--two-line"><span
-							class="mdl-list__item-primary-content"> <a
-								href="https://github.com/javajigi"> <img
-									class="mdl-list__item-avatar" height="48" width="48"
-									src="https://avatars2.githubusercontent.com/u/520500?v=3&amp;s=96"
-									alt="@javajigi">
-							</a> <a href="issue.html"><strong>질문 작성 중 임시저장 기능이 있으면
-										좋겠어요</strong></a> <span class="mdl-list__item-sub-title">#259 opened
-									<relative-time datetime="2016-01-12T08:08:59Z"
-										title="2016년 1월 12일 오후 5:08 GMT+9">on 12 Jan</relative-time>
-									by <a
-									href="https://github.com/javajigi/slipp/issues?q=is%3Aissue+is%3Aopen+author%3Ajavajigi"
-									aria-label="View all issues opened by javajigi"
-									class="tooltipped tooltipped-s muted-link">javajigi</a>
-							</span>
-						</span> </span> <span class="mdl-list__item-secondary-content">
-								<div class="material-icons mdl-badge mdl-badge--overlap"
-									data-badge="1">comment</div>
-						</span></li>
-						<li class="mdl-list__item mdl-list__item--two-line"><span
-							class="mdl-list__item-primary-content"> <a
-								href="https://github.com/javajigi"> <img
-									class="mdl-list__item-avatar" height="48" width="48"
-									src="https://avatars2.githubusercontent.com/u/520500?v=3&amp;s=96"
-									alt="@javajigi">
-							</a> <a href="issue.html"><strong>원 글에도 공감하기를 할 수 있도록
-										한다.</strong></a> <span class="mdl-list__item-sub-title">#259 opened
-									<relative-time datetime="2016-01-12T08:08:59Z"
-										title="2016년 1월 12일 오후 5:08 GMT+9">on 12 Jan</relative-time>
-									by <a
-									href="https://github.com/javajigi/slipp/issues?q=is%3Aissue+is%3Aopen+author%3Ajavajigi"
-									aria-label="View all issues opened by javajigi"
-									class="tooltipped tooltipped-s muted-link">javajigi</a>
-							</span>
-						</span> </span> <span class="mdl-list__item-secondary-content">
-								<div class="material-icons mdl-badge mdl-badge--overlap"
-									data-badge="5">comment</div>
-						</span></li>
-						<li class="mdl-list__item mdl-list__item--two-line"><span
-							class="mdl-list__item-primary-content"> <a
-								href="https://github.com/javajigi"> <img
-									class="mdl-list__item-avatar" height="48" width="48"
-									src="https://avatars2.githubusercontent.com/u/520500?v=3&amp;s=96"
-									alt="@javajigi">
-							</a> <a href="issue.html"><strong>자신이 공감한 글을 볼 수 있도록
-										해주세요</strong></a> <span class="mdl-list__item-sub-title">#259 opened
-									<relative-time datetime="2016-01-12T08:08:59Z"
-										title="2016년 1월 12일 오후 5:08 GMT+9">on 12 Jan</relative-time>
-									by <a
-									href="https://github.com/javajigi/slipp/issues?q=is%3Aissue+is%3Aopen+author%3Ajavajigi"
-									aria-label="View all issues opened by javajigi"
-									class="tooltipped tooltipped-s muted-link">javajigi</a>
-							</span>
-						</span> </span> <span class="mdl-list__item-secondary-content">
-								<div class="material-icons mdl-badge mdl-badge--overlap"
-									data-badge="4">comment</div>
-						</span></li>
-						<li class="mdl-list__item mdl-list__item--two-line"><span
-							class="mdl-list__item-primary-content"> <a
-								href="https://github.com/javajigi"> <img
-									class="mdl-list__item-avatar" height="48" width="48"
-									src="https://avatars2.githubusercontent.com/u/520500?v=3&amp;s=96"
-									alt="@javajigi">
-							</a> <a href="issue.html"><strong>트랙백이 가능하도록 한다.</strong></a> <span
-								class="mdl-list__item-sub-title">#259 opened <relative-time
-										datetime="2016-01-12T08:08:59Z"
-										title="2016년 1월 12일 오후 5:08 GMT+9">on 12 Jan</relative-time>
-									by <a
-									href="https://github.com/javajigi/slipp/issues?q=is%3Aissue+is%3Aopen+author%3Ajavajigi"
-									aria-label="View all issues opened by javajigi"
-									class="tooltipped tooltipped-s muted-link">javajigi</a></span>
-						</span> </span> <span class="mdl-list__item-secondary-content">
-								<div class="material-icons mdl-badge mdl-badge--overlap"
-									data-badge="0">comment</div>
-						</span></li>
+						</span></li> -->
 					</ul>
 				</div>
 			</div>

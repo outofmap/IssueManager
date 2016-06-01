@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import issueManager.dao.IssueDao;
 import issueManager.dao.ProjectDao;
 import issueManager.dao.UserDao;
+import issueManager.model.Issue;
 import issueManager.model.Project;
 import issueManager.model.User;
 
@@ -70,6 +71,11 @@ public class IssueService {
 		// project table에서 지우기
 		projectDao.delete(projectId);
 
+	}
+
+	public List<Issue> getIssuelistByPId(Long projectId) {
+		return issueDao.getIssuelist(projectId);
+		
 	}
 
 }

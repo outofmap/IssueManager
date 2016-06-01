@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import issueManager.dao.ProjectDao;
+import issueManager.model.Issue;
 import issueManager.model.Project;
 import issueManager.model.User;
 import issueManager.service.IssueService;
@@ -46,9 +46,11 @@ public class ProjectController {
 	@RequestMapping(value = "/{projectId}", method = RequestMethod.GET)
 	public String show(@PathVariable Long projectId, Model model) {
 		Project savedProject = service.getProjectInfo(projectId);
+		List<Issue> issuelist = service.getIssuelistByPId(projectId);
 		logger.debug("found project info{}" + savedProject.toString());
 		model.addAttribute("members", savedProject.getUserList());
 		model.addAttribute("project", savedProject);
+		model.addAttribute("issues",issuelist);
 		return "/project/issueList";
 	}
 
