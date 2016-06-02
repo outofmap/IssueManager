@@ -31,14 +31,15 @@ public class IssueService {
 		projectDao.insertWithEmail(projectId, loginUser.getEmail());
 	}
 
+	@Transactional
 	public Project getProjectInfo(Long projectId) {
 		Project saved = projectDao.findById(projectId);
 		List<User> members = projectDao.getMembers(projectId);
-		logger.debug("members"+members.toString());
+		logger.debug("members" + members.toString());
 		if (!members.isEmpty()) {
 			saved.setUserList(members);
 			logger.debug("project members" + saved.getUserList());
-		} 
+		}
 		return saved;
 	}
 
@@ -59,6 +60,7 @@ public class IssueService {
 		return null;
 	}
 
+	@Transactional
 	public void deleteProject(Long projectId) {
 		// TODO Auto-generated method stub
 		// ISSUE에 있는 reply 지우기
@@ -75,7 +77,28 @@ public class IssueService {
 
 	public List<Issue> getIssuelistByPId(Long projectId) {
 		return issueDao.getIssuelist(projectId);
-		
+
+	}
+
+	public Issue insertIssue(User loginUser, Long projectId, Issue issue) {
+		if (isMemeber(projectId, loginUser)) {
+			//isert query 작성하기 
+			Long issueId = issueDao.insert(issue, projectId, loginUser);
+			return issueDao.select(issueId);
+		} else {
+			return null;
+		}
+	}
+
+	public boolean isMemeber(Long projectId, User loginUser) {
+		List<User> members = projectDao.getMembers(projectId);
+		logger.debug("member in project", members.toString());
+		for (User member : members) {
+			if (member.isSameUser(loginUser)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

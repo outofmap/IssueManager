@@ -1,26 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html;charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/include/tags.jspf"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="kr">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Issue Tracking System</title>
-
-    <link href='https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
-    <link rel="stylesheet" href="/static-resources/css/styles.css">
+	<%@ include file="/include/header.jspf"%>
 </head>
 <body>
 	<div class="issues issues--wrap mdl-layout mdl-js-layout has-drawer is-upgraded">
-      <header class="mdl-layout__header mdl-layout__header--waterfall">
+      <!-- <header class="mdl-layout__header mdl-layout__header--waterfall">
         <div class="mdl-layout__header-row">
-          <!-- Title -->
+          Title
           <span class="mdl-layout-title">javajigi/slipp</span>
         </div>
-        <!-- Tabs -->
+        Tabs
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
           <a href="https://github.com/javajigi/slipp"" class="mdl-layout__tab">Code</a>
           <a href="#" class="mdl-layout__tab is-active">
@@ -33,13 +26,14 @@
           <a href="https://github.com/javajigi/slipp/pulse" class="mdl-layout__tab">Pulse</a>
           <a href="https://github.com/javajigi/slipp/graphs" class="mdl-layout__tab">Graphs</a>
         </div>
-      </header>
+      </header> -->
+      <%@ include file="/include/navigation.jspf"%>
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">GitHub</span>
       </div>
       <main class="mdl-layout__content">
         <div class="issues-back">
-          <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="index.html" title="go back" role="button">
+          <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="/projects/${projectId}" title="go back" role="button">
             <i class="material-icons" role="presentation">arrow_back</i>
           </a>
         </div>
@@ -63,7 +57,7 @@
             </div>
             <div class="mdl-card__title mdl-color-text--grey-50">
               <i class="material-icons">check_circle</i>
-              <h2 class="mdl-card__title-text">spring boot 기반 개발이 가능하도록 한다. #227</h2>
+              <h2 class="mdl-card__title-text">${issue.title} # ${issue.issueId}</h2>
             </div>
             <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
               <a href="https://github.com/javajigi">
@@ -72,25 +66,26 @@
               <div>
                 <div class="author-text">
                   <strong>
-                    <a href="https://github.com/javajigi" class="author">javajigi</a>
+                    <a href="#" class="author">${issue.writer}</a>
                   </strong>
                 </div>
-                <span>11 Aug 2015</span>
+                <!-- <span>11 Aug 2015</span> -->
               </div>
               <div class="section-spacer"></div>
-              <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <!--   <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                 <i class="material-icons" role="presentation">thumb_up</i><span class="visuallyhidden">like comment</span>
               </button>
               <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                 <i class="material-icons" role="presentation">thumb_down</i><span class="visuallyhidden">dislike comment</span>
-              </button>
+              </button> -->
             </div>
             <div class="mdl-color-text--grey-700 mdl-card__supporting-text">
-              <p>현재 모든 설정 파일도 java config 기반으로 변경했다.<br>spring boot 기반으로 설정을 변경하는 것도 가능하겠다.</p>
+              <!-- <p>현재 모든 설정 파일도 java config 기반으로 변경했다.<br>spring boot 기반으로 설정을 변경하는 것도 가능하겠다.</p> -->
+              <p>${issue.contents}</p>
             </div>
             <div class="mdl-color-text--primary-contrast mdl-card__supporting-text comments">
               <!-- comments start -->
-              <div class="comment mdl-color-text--grey-700">
+             <!--  <div class="comment mdl-color-text--grey-700">
                 <header class="comment__header">
                   <img class="comment__avatar2" height="48" width="48" src="https://avatars2.githubusercontent.com/u/520500?v=3&amp;s=96" alt="@javajigi">
                   <div class="comment__author">
@@ -101,8 +96,8 @@
                   </div>
                 </header>
               </div>
-              <hr>
-              <div class="comment mdl-color-text--grey-700">
+              <hr> -->
+              <!-- <div class="comment mdl-color-text--grey-700">
                 <header class="comment__header">
                   <img class="comment__avatar2" height="48" width="48" src="https://avatars2.githubusercontent.com/u/520500?v=3&amp;s=96" alt="@javajigi">
                   <div class="comment__author">
@@ -113,8 +108,8 @@
                   </div>
                 </header>
               </div>
-              <hr>
-              <div class="comment mdl-color-text--grey-700">
+              <hr> -->
+              <!-- <div class="comment mdl-color-text--grey-700">
                 <header class="comment__header">
                   <img class="comment__avatar2" height="48" width="48" src="https://avatars2.githubusercontent.com/u/520500?v=3&amp;s=96" alt="@javajigi">
                   <div class="comment__author">
@@ -125,23 +120,16 @@
                   </div>
                 </header>
               </div>
-              <hr>
+              <hr> -->
               <div class="comment mdl-color-text--grey-700">
                 <header class="comment__header">
-                  <img class="comment__avatar" height="48" width="48" src="https://avatars2.githubusercontent.com/u/520500?v=3&amp;s=96" alt="@javajigi">
+                  <img class="comment__avatar" height="48" width="48" src="#" alt="${issue.user_email}">
                   <div class="comment__author">
                     <strong>
-                      <a href="/javajigi" class="author">javajigi</a>
+                      <a href="#" class="author">${issue.writer}</a>
                     </strong>
-                    <span>11 Aug 2015</span>
                   </div>
                   <nav class="comment__actions">
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                      <i class="material-icons" role="presentation">thumb_up</i><span class="visuallyhidden">like comment</span>
-                    </button>
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                      <i class="material-icons" role="presentation">thumb_down</i><span class="visuallyhidden">dislike comment</span>
-                    </button>
                   </nav>
                 </header>
                 <div class="comment__text">
@@ -149,7 +137,8 @@
                 </div>
               </div>
               <hr>
-              <div class="comment mdl-color-text--grey-700">
+              
+             <!--  <div class="comment mdl-color-text--grey-700">
                 <header class="comment__header">
                   <img class="comment__avatar2" height="48" width="48" src="https://avatars2.githubusercontent.com/u/520500?v=3&amp;s=96" alt="@javajigi">
                   <div class="comment__author">
@@ -194,9 +183,9 @@
                     </strong>
                   </div>
                 </header>
-              </div>
-              <!-- comments end -->
+              </div> -->
             </div>
+              <!-- comments end -->
             <div class="mdl-color-text--primary-contrast mdl-card__supporting-text new-comment">
               <form>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

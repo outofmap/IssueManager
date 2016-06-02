@@ -47,7 +47,7 @@
 							<li class="mdl-list__item mdl-list__item--two-line">
 							<span class="mdl-list__item-primary-content"> 
 								<a href="#"> <img class="mdl-list__item-avatar" height="48" width="48" src="#" alt="@javajigi"></a>
-	 								<a href="/projects/${project.projectId}/${each.issueId}">
+	 								<a href="/projects/${project.projectId}/issues/${each.issueId}">
 	 									<strong>${each.title}</strong></a> 
 	 									<span class="mdl-list__item-sub-title">#${each.issueId} opened by ${each.writer} ${each.user_email}</span>
 									<!-- 	<relative-time datetime="2016-01-12T08:08:59Z"

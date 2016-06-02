@@ -31,7 +31,7 @@ public class ProjectController {
 
 	// project 생성
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public String make(@LoginUser User loginUser, Project project, Model model) {
+	public String make(@LoginUser User loginUser, Project project) {
 		logger.debug(loginUser.getClass().getName());
 		if (!loginUser.isGuestUser()) {
 			service.insertProject(loginUser, project);
