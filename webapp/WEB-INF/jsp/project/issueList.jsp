@@ -95,29 +95,25 @@
 		</footer> </main>
 		<div class="mdl-layout__obfuscator"></div>
 	</div>
-	
-	
 	<dialog class="mdl-dialog new-issue">
 	<div class="pr">
 		<i class="material-icons">create</i>
 	</div>
 	<div class="mdl-dialog__content">
-		<form action="#">
+	<form:form action="/projects/${project.projectId}/issues" name="issue" modelAttribute="issue" method="post">
 			<div class="mdl-textfield mdl-js-textfield">
-				<input class="mdl-textfield__input" type="text"
-					id="new-issue__title"> <label class="mdl-textfield__label"
-					for="new-issue__title"><strong>Title</strong></label>
+				<form:input path = "title" class="mdl-textfield__input" type="text" id="new-issue__title"/> 
+				<form:errors path = "title" class="mdl-textfield__input" type="text" id="new-issue__title"/> 
+				<label class="mdl-textfield__label"	for="new-issue__title"><strong>Title</strong></label>
 			</div>
-			<textarea rows=20 class="mdl-textfield__input"
-				id="new-issue__comment"></textarea>
-		</form>
-	</div>
-	<div class="mdl-dialog__actions mdl-dialog__actions">
-		<button type="button" class="mdl-button close">Submit new
-			issue</button>
+			<form:textarea path="contents" rows="10" class="mdl-textfield__input" id="new-issue__comment" />
+			<div class="mdl-dialog__actions mdl-dialog__actions">
+				<button type="submit" class="mdl-button close">Submit new issue</button>
+			</div>
+	</form:form>
 	</div>
 	</dialog>
-	<script src="https://cdn.tinymce.com/4/tinymce.min.js">
+	<!-- <script src="https://cdn.tinymce.com/4/tinymce.min.js"> -->
     <%@ include file="/include/footer.jspf" %>
 </body>
 </html>

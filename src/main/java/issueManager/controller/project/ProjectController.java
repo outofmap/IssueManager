@@ -51,6 +51,7 @@ public class ProjectController {
 		model.addAttribute("members", savedProject.getUserList());
 		model.addAttribute("project", savedProject);
 		model.addAttribute("issues",issuelist);
+		model.addAttribute("issue", new Issue());
 		return "/project/issueList";
 	}
 
