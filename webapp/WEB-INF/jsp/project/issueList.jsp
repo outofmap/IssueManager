@@ -103,10 +103,11 @@
 	<form:form action="/projects/${project.projectId}/issues" name="issue" modelAttribute="issue" method="post">
 			<div class="mdl-textfield mdl-js-textfield">
 				<form:input path = "title" class="mdl-textfield__input" type="text" id="new-issue__title"/> 
-				<form:errors path = "title" class="mdl-textfield__input" type="text" id="new-issue__title"/> 
+				<form:errors path = "title" cssClass="error" /> 
 				<label class="mdl-textfield__label"	for="new-issue__title"><strong>Title</strong></label>
 			</div>
 			<form:textarea path="contents" rows="10" class="mdl-textfield__input" id="new-issue__comment" />
+			<form:errors path = "contents" cssClass="error" /> 
 			<div class="mdl-dialog__actions mdl-dialog__actions">
 				<button type="submit" class="mdl-button close">Submit new issue</button>
 			</div>

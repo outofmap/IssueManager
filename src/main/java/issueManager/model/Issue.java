@@ -1,15 +1,25 @@
 package issueManager.model;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Issue {
 	private Long issueId;
 	private String writer;
+	@NotBlank
+	@Size(min=2,max=45,message="최소2글자,최대45글자입니다.")
 	private String title;
+	@NotBlank
+	@Size(min=2,max=300,message="최소2글자,최대300글자입니다.")
 	private String contents;
 	private Long proejctId;
 	private String user_email;
+	@Size(min=2,max=10,message="최소2글자,최대10글자입니다.")
 	private String status;
 	private Long labelId;
 	private Long milestoneId;
+	@Size(min=2,max=10,message="이름은 최소 2글자, 최대10글자 입니다.")
 	private String assignee;
 	private Long file_Id;
 	private String assignee_email;

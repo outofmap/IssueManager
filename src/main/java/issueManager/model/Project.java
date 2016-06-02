@@ -2,8 +2,14 @@ package issueManager.model;
 
 import java.util.List;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Project {
 	private Long projectId;
+	@NotBlank
+	@Size(min=2,max=100,message="최소2글자, 최대 100글자입니다.")
 	private String name;
 	private List<User> userList;
 	

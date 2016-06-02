@@ -1,6 +1,7 @@
 package issueManager.controller.issue;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +32,7 @@ public class IssueController {
 
 	// post만들기
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public String make(@LoginUser User loginUser, @PathVariable Long projectId, Issue issue, Model model) {
+	public String make(@LoginUser User loginUser, @PathVariable Long projectId, @Valid Issue issue, Model model) {
 		if (!loginUser.isGuestUser()) {
 			logger.debug("proejctId:" + projectId.toString());
 			logger.debug("issue title:" + issue.getTitle());

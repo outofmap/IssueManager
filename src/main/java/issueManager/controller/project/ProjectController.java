@@ -3,6 +3,7 @@ package issueManager.controller.project;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +32,7 @@ public class ProjectController {
 
 	// project 생성
 	@RequestMapping(value = "", method = RequestMethod.POST)
-	public String make(@LoginUser User loginUser, Project project) {
+	public String make(@LoginUser User loginUser, @Valid Project project) {
 		logger.debug(loginUser.getClass().getName());
 		if (!loginUser.isGuestUser()) {
 			service.insertProject(loginUser, project);
