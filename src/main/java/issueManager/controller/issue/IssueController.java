@@ -1,5 +1,7 @@
 package issueManager.controller.issue;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
@@ -14,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import issueManager.dao.IssueDao;
 import issueManager.dao.ProjectDao;
+import issueManager.dao.ReplyDao;
 import issueManager.model.Issue;
+import issueManager.model.Reply;
 import issueManager.model.User;
 import issueManager.service.IssueService;
 import web.argumentresolver.LoginUser;
@@ -29,6 +33,8 @@ public class IssueController {
 	ProjectDao projectDao;
 	@Autowired
 	IssueDao issueDao;
+	@Autowired
+	ReplyDao replyDao;
 
 	// post만들기
 	@RequestMapping(value = "", method = RequestMethod.POST)
@@ -57,7 +63,9 @@ public class IssueController {
 	public String show(@LoginUser User loginUser, @PathVariable Long issueId, Model model,
 			@PathVariable Long projectId){
 		Issue saved = issueDao.select(issueId);
+		List<Reply> replys = replyDao.findAll(issueId);
 		model.addAttribute("issue", saved);
+		model.addAttribute("replys", replys);
 		model.addAttribute("projectId",projectId);
 		return "/issue/issue";
 	}

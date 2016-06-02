@@ -13,6 +13,7 @@ public class Reply {
 	String writer;
 	String creationTime;
 	Long issueId;
+	
 	public Long getReplyId() {
 		return replyId;
 	}

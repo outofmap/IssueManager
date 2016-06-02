@@ -121,23 +121,31 @@
                 </header>
               </div>
               <hr> -->
+             <c:if test="${empty replys}">
+				<li class="mdl-list__item mdl-list__item--two-line"><span
+					class="mdl-list__item-primary-content"> <a href="#"><strong>등록 된 리플이 없습니다.</strong></a>
+				</span></li>
+			</c:if>
+          	<c:if test="${not empty replys}">
+			<c:forEach items="${replys}" var="reply">
               <div class="comment mdl-color-text--grey-700">
                 <header class="comment__header">
-                  <img class="comment__avatar" height="48" width="48" src="#" alt="${issue.user_email}">
+                  <img class="comment__avatar" height="48" width="48" src="#" alt="${reply.writer}}">
                   <div class="comment__author">
                     <strong>
-                      <a href="#" class="author">${issue.writer}</a>
+                      <a href="#" class="author">${reply.writer}</a>
                     </strong>
                   </div>
                   <nav class="comment__actions">
                   </nav>
                 </header>
                 <div class="comment__text">
-                  <span>모든 소스 코드를 scala 기반으로 변경한 후에 진행하는 것이 좋을 수도 있겠다.</span>
+                  <span>${reply.reply}</span>
                 </div>
               </div>
               <hr>
-              
+            </c:forEach>						
+			</c:if>
              <!--  <div class="comment mdl-color-text--grey-700">
                 <header class="comment__header">
                   <img class="comment__avatar2" height="48" width="48" src="https://avatars2.githubusercontent.com/u/520500?v=3&amp;s=96" alt="@javajigi">
