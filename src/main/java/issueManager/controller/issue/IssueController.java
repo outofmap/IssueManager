@@ -43,7 +43,8 @@ public class IssueController {
 				return "redirect:/projects/{projectId}/issues/" + saved.getIssueId();
 			} else {
 				logger.debug("member가 아님.");
-				return "redirect:/projects/" + projectId;
+				model.addAttribute("projectId", projectId);
+				return "/issue/unable";
 			}
 		} else {
 			return "redirect:/users/login";
