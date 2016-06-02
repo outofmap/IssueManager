@@ -15,6 +15,8 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import com.navercorp.lucy.security.xss.servletfilter.XssEscapeServletFilter;
+
 import issueManager.config.AppConfig;
 import issueManager.config.WebMvcConfig;
 
@@ -34,6 +36,10 @@ public class MyWebInnitializer implements WebApplicationInitializer {
 
 		servletContext.addFilter("httpMethodFilter", HiddenHttpMethodFilter.class).addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, "/*");
 		AnnotationConfigWebApplicationContext webContext = new AnnotationConfigWebApplicationContext();
+		XssEscapeServletFilter xssLucy = new XssEscapeServletFilter();
+		servletContext.addFilter("xssPreventeDefender",xssLucy).addMappingForUrlPatterns(null, false,"/*");
+		servletContext.addFilter("xssSaxFilterDefender",xssLucy).addMappingForUrlPatterns(null, false,"/*");
+		servletContext.addFilter("xssFilterDefender",xssLucy).addMappingForUrlPatterns(null, false,"/*");
 		webContext.setParent(appContext);
 		webContext.register(WebMvcConfig.class);
 		ServletRegistration.Dynamic dispatcher = servletContext.addServlet("next", new DispatcherServlet(webContext));
