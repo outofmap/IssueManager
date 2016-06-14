@@ -20,7 +20,6 @@ public class Project {
 		this.name = name;
 	};
 
-
 	public Long getProjectId() {
 		return projectId;
 	}
@@ -79,13 +78,11 @@ public class Project {
 
 	public boolean hasUser(String email) {
 		for (User user : this.userList) {
-			if(user.getEmail().equals(email)){
+			if(user.checkUserEmail(email)){
 				return true;
 			}
 		}
 		return false;
 	}
-	
-	
 	
 }

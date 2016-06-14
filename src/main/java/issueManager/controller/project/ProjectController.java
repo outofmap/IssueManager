@@ -19,6 +19,7 @@ import issueManager.model.Issue;
 import issueManager.model.Project;
 import issueManager.model.User;
 import issueManager.service.IssueService;
+import issueManager.service.NotMemberException;
 import web.argumentresolver.LoginUser;
 
 @Controller
@@ -73,20 +74,20 @@ public class ProjectController {
 
 	@RequestMapping(value = "/{projectId}/edit", method = RequestMethod.GET)
 	public String showEditPage(@PathVariable Long projectId, @LoginUser User loginUser, Model model) {
-		if (!loginUser.isGuestUser()) {
-			// loginUser가 해당 proejctId의 member인지 확인한다. 
-			Project usersProject = service.getProjectByUser(projectId, loginUser.getEmail());
-			if (usersProject != null) {
-				model.addAttribute("project", usersProject);
-				return "/project/editForm";
-			} else {
-				logger.debug("user는 다른 프로젝트는 참여했지만, 이 프로젝트는 user가 참여하지 않은 프로젝트임.");
-				return "/project/unableToEdit";
-			}
-		} else {
-			// guest는 수정 권한 없음.
+		if (loginUser.isGuestUser()) {
 			return "redirect:/users/login";
 		}
+		try {
+			Project usersProject = service.getProjectByUser(projectId, loginUser.getEmail());
+			model.addAttribute("project", usersProject);
+			return "/project/editForm";
+			
+		} catch (NotMemberException notMember) {
+			logger.debug("user는 다른 프로젝트는 참여했지만, 이 프로젝트는 user가 참여하지 않은 프로젝트임.");
+			return "/project/unableToEdit";
+			
+		}
+		// loginUser가 해당 proejctId의 member인지 확인한다. 
 	}
 	//프로젝트 이름 수정하기 
 	@RequestMapping(value = "/{projectId}", method = RequestMethod.PUT)

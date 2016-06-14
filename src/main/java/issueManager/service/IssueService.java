@@ -42,22 +42,15 @@ public class IssueService {
 		}
 		return saved;
 	}
-
-	public Project getProjectByUser(Long projectId, String email) {
-		List<Project> projectList = projectDao.findbyEmail(email);
-		logger.debug("proejctlist with email : " + projectList.toString());
-		return matchByprojectId(projectId, projectList);
-
-	}
-
-	private Project matchByprojectId(Long projectId, List<Project> projectlist) {
-		for (Project project : projectlist) {
-			if (project.getProjectId().equals(projectId)) {
-				return project;
-			}
+	
+	public Project getProjectByUser(Long projectId, String email) throws NotMemberException {
+		Project project = getProjectInfo(projectId);
+		if (project.hasUser(email)) {
+			return project;
+		} else {
+			throw new NotMemberException();
 		}
-		// proejcId와 match되는 project가 없음. user는 projectId에 참여하지 않음. .
-		return null;
+
 	}
 
 	@Transactional

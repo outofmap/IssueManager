@@ -67,7 +67,7 @@ public class User {
 		return checkUserEmail(user.getEmail());
 	}
 	
-	private boolean checkUserEmail(String newUserEmail) {
+	public boolean checkUserEmail(String newUserEmail) {
 		//this.email = email, this는 loginUser 인 상태 
 		//login user는 GUESTUSER 또는 session에서 저장된 USER인 상태이다. 
 		if(email == null){
