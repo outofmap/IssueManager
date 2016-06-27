@@ -10,7 +10,7 @@ project별 이슈생성 및 관리를 도와주는 서비스
 Java web programming수업에서 진행한 1인 프로젝트로 spring 프레임워크를 활용해 이슈관리 시스템의 백엔드를 완성 후 Linux서버에 쉘 스크립트를 통한 배포자동화를 구현. 
 
 #### 서비스 시연 동영상(이미지를 클릭하면 동영상이 실행됩니다.)
-[![시연동영상](https://cloud.githubusercontent.com/assets/11879870/16192345/b27b6b2e-3723-11e6-9af6-e20f8960348b.png)](https://youtu.be/VaSbgZ38H14)
+[![시연동영상](https://cloud.githubusercontent.com/assets/11879870/16192345/b27b6b2e-3723-11e6-9af6-e20f8960348b.png)](https://youtu.be/c6cTRXSEfyQ)
 
 #### 프로젝트에서 맡은 일
 ERD 및 DB table설계,Spring과 Maven 초기 세팅, REST API에 따른 백엔드 API구현(회원가입, 로그인, 프로젝트 CRUD, 이슈 보기/생성, 리플 보기 기능), Lucy 활용 xss공격 방어, Transaction적용, 데이터 유효성 체크, 비밀번호 암호화, nginx사용, linux 서버 세팅 및 쉘 스크립트로 배포 자동화.
